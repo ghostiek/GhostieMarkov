@@ -11,7 +11,8 @@ A Discord bot written using Python 3.6 and the wrapper [discord.py](https://gith
 To get it to respond to you must have `ghostie` inputed somewhere in your message. Otherwise the bot will just be passively logging every other message.
 
 ## Example response
-**Warning:** Can be sassy at times
+**Warning:** Can be sassy or depressing at times
 
 ![](https://i.imgur.com/ziSNfIJ.png)
 
+![](https://i.imgur.com/pHIgyvE.png)
