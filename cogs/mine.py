@@ -9,7 +9,7 @@ class MineCog:
     async def on_message(self, message):
         if "ghostie" in message.content or message.content.startswith("$") or message.author.bot:
             return
-        with open(os.getcwd() + r"\data\responses.txt", "a") as file:
+        with open("\\data\\responses.txt", "a") as file:
             try:
                 file.write(message.content + "\n")
             except UnicodeEncodeError:
@@ -19,7 +19,7 @@ class MineCog:
     @commands.command(name = "get")
     async def gather_all_messages(self, ctx, limit = 100):
         channel = ctx.message.channel
-        with open(os.getcwd() + "\data\responses.txt", "a") as file:
+        with open("\\data\\responses.txt", "a") as file:
             async for i in channel.history(limit = limit):
                 try:
                     file.write(i.content + "\n")

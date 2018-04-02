@@ -2,12 +2,12 @@ import random
 import os
 
 def read_file(filename):
-    with open(r"data\responses.txt", "r",) as file:
+    with open("data/responses.txt", "r",) as file:
         content = file.read().replace("\n", ". ")
     return content
 
 def read_book_file(filename):
-    with open(r"data\book.txt", "r",) as file:
+    with open("data/book.txt", "r",) as file:
         content = file.read().replace("\n\n", " ")
     return content
 
@@ -26,7 +26,7 @@ def build_chain(content, chain={}):
 def generate_message(chain):
     first_word = random.choice(list(chain.keys()))
     message = first_word.capitalize()
-    count = 10
+    count = 20
     while len(message.split(' ')) < count:
         if first_word.endswith((".", "\n")):
             return message[:-1]
