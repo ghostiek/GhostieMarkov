@@ -8,7 +8,8 @@ bot = commands.Bot(command_prefix='$')
 
 extensions = ["cogs.admin",
               "cogs.mine",
-              "cogs.talk"]
+              "cogs.talk",
+              "cogs.fun"]
 
 @bot.event
 async def on_ready():
