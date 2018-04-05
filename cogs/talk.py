@@ -7,7 +7,7 @@ class TalkCog:
         self.chain = chain
 
     async def on_message(self, message):
-        if not "ghostie" in message.content.lower() or message.author.bot:
+        if not "ghostie" in message.content.lower() or message.author.bot or self.bot.user.mention in message.content:
             return
         mes = markov.generate_message(message, self.chain)
         await message.channel.send(mes)

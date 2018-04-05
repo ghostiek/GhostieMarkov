@@ -2,13 +2,8 @@ import random
 import os
 
 def read_file(filename):
-    with open("data/responses.txt", "r",) as file:
+    with open(os.getcwd() + os.sep.join([os.sep + "data", "responses.txt"]), "r") as file:
         content = file.read().replace("\n", ". ")
-    return content
-
-def read_book_file(filename):
-    with open("data/book.txt", "r",) as file:
-        content = file.read().replace("\n\n", " ")
     return content
 
 def build_chain(content, chain={}):
@@ -40,18 +35,3 @@ def generate_message(user_message, chain):
         first_word = next_word
         message += ' ' + next_word
     return message
-
-def generate_book_message(chain):
-    first_word = random.choice(list(chain.keys()))
-    message = first_word.capitalize()
-    count = random.randrange(0,10)
-    while True:
-        next_word = random.choice(chain[first_word])
-        first_word = next_word
-        message += ' ' + next_word
-
-if __name__ == "__main__":
-    content = read_file("book.txt")
-    while input().lower() != "bye":
-        chain = build_chain(content)
-        print(generate_book_message(chain))

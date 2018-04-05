@@ -19,7 +19,7 @@ class MineCog:
     @commands.command(name = "get")
     async def gather_all_messages(self, ctx, limit = 100):
         channel = ctx.message.channel
-        with open("\\data\\responses.txt", "a") as file:
+        with open(os.chdir(os.getcwd()) + os.sep.join([os.sep + "data", "responses.txt"]), "a") as file:
             async for i in channel.history(limit = limit):
                 try:
                     file.write(i.content + "\n")

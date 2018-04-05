@@ -22,6 +22,6 @@ if __name__ == '__main__':
         except Exception as e:
             print("Failed to load extension " + extension, file=sys.stderr)
             traceback.print_exc()
-    with open(os.getcwd() + "\\data\\token.txt") as file:
+    with open(os.getcwd() + os.sep.join([os.sep + "data", "token.txt"])) as file:
         content = file.read()
     bot.run(content, bot=True, reconnect=True)
