@@ -23,8 +23,13 @@ def build_chain(content, chain={}):
         index += 1
     return chain
 
-def generate_message(chain):
-    first_word = random.choice(list(chain.keys()))
+
+def generate_message(user_message, chain):
+    first_key = random.choice(user_message.content.split(' '))
+    if first_key in chain:
+        first_word = random.choice(list(chain[first_key]))
+    else:
+        first_word = random.choice(list(chain.keys()))
     message = first_word.capitalize()
     count = 20
     while len(message.split(' ')) < count:

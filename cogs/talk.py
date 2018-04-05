@@ -9,7 +9,7 @@ class TalkCog:
     async def on_message(self, message):
         if not "ghostie" in message.content.lower() or message.author.bot:
             return
-        mes = markov.generate_message(self.chain)
+        mes = markov.generate_message(message, self.chain)
         await message.channel.send(mes)
 
 def setup(bot):
