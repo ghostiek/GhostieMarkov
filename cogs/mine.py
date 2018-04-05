@@ -7,9 +7,9 @@ class MineCog:
 
     #Event that logs messages
     async def on_message(self, message):
-        if "ghostie" in message.content or message.content.startswith("$") or message.author.bot:
+        if "ghostie" in message.content or message.content.startswith("$") or message.author.bot or self.bot.user.mentioned_in(message):
             return
-        with open("\\data\\responses.txt", "a") as file:
+        with open(os.getcwd() + os.sep.join([os.sep + "data", "responses.txt"]), "a") as file:
             try:
                 file.write(message.content + "\n")
             except UnicodeEncodeError:

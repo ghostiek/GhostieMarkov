@@ -1,5 +1,4 @@
 from Markov import markov
-from discord.ext import commands
 
 class TalkCog:
     def __init__(self, bot, chain):
@@ -7,10 +6,9 @@ class TalkCog:
         self.chain = chain
 
     async def on_message(self, message):
-        if not "ghostie" in message.content.lower() or message.author.bot or self.bot.user.mention in message.content:
-            return
-        mes = markov.generate_message(message, self.chain)
-        await message.channel.send(mes)
+        if "ghostie" in message.content.lower() or self.bot.user.mentioned_in(message) and not message.author.bot :
+            mes = markov.generate_message(message, self.chain)
+            await message.channel.send(mes)
 
 def setup(bot):
     bot.add_cog(TalkCog(bot, markov.build_chain(markov.read_file("responses"))))
