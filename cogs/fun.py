@@ -21,6 +21,10 @@ class FunCog:
         urllib.request.urlretrieve(url, dir)
         await ctx.send(file = discord.File(dir))
 
+    @commands.command(name="test")
+    async def test(self, ctx):
+        await ctx.send(str(ctx.author.id))
+
 
 def setup(bot):
     bot.add_cog(FunCog(bot))

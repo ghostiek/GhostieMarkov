@@ -18,7 +18,6 @@ def build_chain(content, chain={}):
         index += 1
     return chain
 
-
 def generate_message(user_message, chain):
     first_key = random.choice(user_message.content.split(' '))
     if first_key in chain:
@@ -30,7 +29,6 @@ def generate_message(user_message, chain):
     while len(message.split(' ')) < count:
         if first_word.endswith((".", "\n")):
             return message[:-1]
-            break
         next_word = random.choice(chain[first_word])
         first_word = next_word
         message += ' ' + next_word
