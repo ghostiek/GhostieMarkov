@@ -11,7 +11,7 @@ class FunCog:
 
     @commands.command(name = "choose")
     async def ban(self, ctx, *, params:str):
-        choice = random.choice(params.split(" "))
+        choice = random.choice(params.split(","))
         await ctx.send("I pick " + choice)
 
     @commands.command(name = "cat")

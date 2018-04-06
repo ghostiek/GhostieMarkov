@@ -23,4 +23,4 @@ Ghostie also comes with a few commands with the prefix `$`
 | Command     | Functionality | Example |
 |---|---|---|
 |cat          | Generates a cat picture | $cat
-|choose       | Ghostie chooses one of the given parameters.<br> They must be seperated with a space character| $choose option1 option2
+|choose       | Ghostie chooses one of the given parameters.<br> They must be seperated with a comma| $choose option1,option2
