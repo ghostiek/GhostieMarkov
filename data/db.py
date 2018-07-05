@@ -28,13 +28,21 @@ def save(message:discord.Message):
 def clean_table(cursor):
     cursor.execute("DELETE FROM Messages;")
 
-if __name__ == "__main__":
+def count_by_guild():
     conn = sqlite3.connect("Ghostie.db")
     c = conn.cursor()
+    c.execute("SELECT count(*) FROM Messages GROUP BY GuildID;")
+    print(c.fetchall())
+    conn.close()
+
+if __name__ == "__main__":
+    #conn = sqlite3.connect("Ghostie.db")
+    #c = conn.cursor()
     #create_table(c)
     #insert_user(c)
-    mockget(c)
-    clean_table(c)
-    mockget(c)
-    conn.commit()
-    conn.close()
+    #mockget(c)
+    #clean_table(c)
+    #mockget(c)
+    #conn.commit()
+    #conn.close()
+    count_by_guild()

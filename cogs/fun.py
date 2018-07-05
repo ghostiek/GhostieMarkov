@@ -3,11 +3,15 @@ import discord
 import random
 import urllib.request
 import os
-
+import numpy as np
+from keras.preprocessing import image
+from keras.models import load_model
 
 class FunCog:
     def __init__(self, bot):
         self.bot = bot
+        path = os.getcwd() + os.sep + "data" + os.sep + 'myfirstalgo.h5'
+        self.classifier = load_model(path)
 
     @commands.command(name = "choose")
     async def ban(self, ctx, *, params:str):
@@ -24,6 +28,22 @@ class FunCog:
     @commands.command(name="test")
     async def test(self, ctx):
         await ctx.send(str(ctx.author.id))
+
+    @commands.command(name="detect")
+    async def detect(self, ctx, photo_url):
+        #Download it
+        dir = os.getcwd() + os.sep + "data" + os.sep + "test.jpeg"
+        urllib.request.urlretrieve(photo_url, dir)
+        test_image = image.load_img(dir, target_size=(64, 64))
+        test_image = image.img_to_array(test_image)
+        test_image = np.expand_dims(test_image, axis=0)
+        result = self.classifier.predict(test_image)
+        if result[0][0] == 1:
+            prediction = 'dog'
+            await ctx.send(prediction)
+        else:
+            prediction = 'cat'
+            await ctx.send(prediction)
 
 
 def setup(bot):
