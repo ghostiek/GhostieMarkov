@@ -24,4 +24,4 @@ Ghostie also comes with a few commands with the prefix `$`
 |---|---|---|
 |cat          | Generates a cat picture | $cat
 |choose       | Ghostie chooses one of the given parameters.<br> They must be seperated with a comma| $choose option1,option2
-|detect       | Ghostie detects if the link you provided is a dog or a cat | $detect linktocatpic.jpg
+|detect       | Ghostie detects if the link you provided is a dog or a cat | $detect linktocatordogpic.jpg
