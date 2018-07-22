@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import random
 import urllib.request
+import urllib.error
 import os
 import numpy as np
 from keras.preprocessing import image
@@ -33,7 +34,13 @@ class FunCog:
     async def detect(self, ctx, photo_url):
         #Download it
         dir = os.getcwd() + os.sep + "data" + os.sep + "test.jpeg"
-        urllib.request.urlretrieve(photo_url, dir)
+        try:
+            urllib.request.urlretrieve(photo_url, dir)
+        except urllib.error.HTTPError as e:
+            print("HTTP Error " + str(e.code) + ": " + e.msg)
+            await ctx.send("Something went wrong")
+            return
+
         test_image = image.load_img(dir, target_size=(64, 64))
         test_image = image.img_to_array(test_image)
         test_image = np.expand_dims(test_image, axis=0)
